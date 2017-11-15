@@ -2,13 +2,18 @@
 // Lecture d'un fichier texte
 function lireFichier($filename)
 {
-	$ligne = array();
-	$fp = fopen($filename,"r");
-	while (!feof($fp))
-	{
-		$ligne[] = fgets($fp, 8192);
+	if(file_exists($filename)){
+		$ligne = array();
+		$fp = fopen($filename,"r");
+		while (!feof($fp))
+		{
+			$ligne[] = fgets($fp, 8192);
+		}
+		return $ligne;
 	}
-	return $ligne;
+	else{
+		exit("Aucun fichier trouvé.");
+	}
 }
 
 // Filtrage des données
